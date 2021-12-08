@@ -37,23 +37,24 @@ public class ControlAccount {
 
             Scanner scanner = new Scanner(file);
 
-            while (scanner.hasNextLine()){
+            while (scanner.hasNext()){
+
 
                 String linie = scanner.nextLine();
 
+//                System.out.println(linie);
 
                 if (linie.equals("")==false){
+
 
                     String tipCont = linie.split(",")[2];
 
                     switch (tipCont){
 
-                        case "cont curent":
-
+                        case "curent":
                             listaConturi.add(new ContCurent(linie));
                             break;
-
-                        case "cont economii":
+                        case "economii":
                             listaConturi.add(new ContEconomii(linie));
                             break;
                     }
@@ -68,6 +69,7 @@ public class ControlAccount {
 
         }catch (Exception e){
 
+            e.printStackTrace();
         }
     }
 
@@ -199,6 +201,22 @@ public class ControlAccount {
 
     }
 
+    public Account getByNumber(int  number){
+
+        for (Account a : listaConturi){
+
+            if (a.getNumarCont()== number){
+
+                return a;
+
+            }
+
+        }
+
+        return  null;
+
+    }
+
     public void save(){
 
         try {
@@ -211,11 +229,9 @@ public class ControlAccount {
             printWriter.close();
 
 
-
         }catch (Exception e){
 
         }
-
 
     }
 

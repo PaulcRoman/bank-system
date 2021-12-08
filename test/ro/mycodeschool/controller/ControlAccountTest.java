@@ -15,30 +15,40 @@ class ControlAccountTest {
     @BeforeEach
     public void initiere(){
 
-        controlAccount = new ControlAccount(Path.of("test","ro","mycodeschool","data","contTest").toString());
+        controlAccount = new ControlAccount("D:\\Full Stack JAVA\\JavaBasics\\MostenirePolimorfism\\bank-system\\test\\ro\\mycodeschool\\data\\contTest");
 
     }
 
     @Test
     public void afisare(){
 
-        controlAccount.afisare();
+         controlAccount.afisare();
 
     }
 
     @Test
-    public void testPlay(){
+    public void load(){
 
+        controlAccount.load();
 
     }
 
+    @Test
+    public void testGetByNumber(){
 
-    @AfterEach
-    public void postConditie(){
-
-      controlAccount.clear();
-
-      controlAccount.add(new Account("1,1,economii,1234,60"));
+        System.out.println(controlAccount.getByNumber(1));
     }
+
+
+
+
+//    @AfterEach
+//    public void postConditie(){
+//
+////      controlAccount.clear();
+//
+//      controlAccount.add(new Account("1,1,economii,1234"));
+//      controlAccount.add(new Account("2,2,curent,2120"));
+//    }
 
 }

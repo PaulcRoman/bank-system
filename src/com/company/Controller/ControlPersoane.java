@@ -58,8 +58,6 @@ public class ControlPersoane {
             }
 
 
-
-
         }catch (Exception e){
 
         }
@@ -114,7 +112,6 @@ public class ControlPersoane {
             Persoana p = listaPersoane.get(index);
 
             p.setPrenume(prenume);
-
 
         }
 

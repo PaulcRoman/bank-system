@@ -164,16 +164,5 @@ public class ControlEnrolment {
         return enrolments;
 
     }
-
-    public void depozit(int accountID, double amount){
-
-
-
-
-
-            }
-
-
-
-    }
+}
 

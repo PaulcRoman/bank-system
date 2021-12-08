@@ -48,7 +48,8 @@ public class ContEconomii extends Account{
     @Override
     public String toString(){
 
-        return super.toString();
+        return super.toString()+this.depozitContEconimii+","+this.perioadaInLuni+","+this.dobanda;
+
     }
 
     @Override
@@ -60,19 +61,19 @@ public class ContEconomii extends Account{
 
     }
 
-    public double calculDobanda(){
-
-        if (perioadaInLuni == 3){
-                return (depozitContEconimii+ 0.5*depozitContEconimii);
-        }else if (perioadaInLuni == 6){
-            return depozitContEconimii+0.10*depozitContEconimii;
-        }else if (perioadaInLuni == 12){
-            return depozitContEconimii+0.20*depozitContEconimii;
-        }else {
-            return depozitContEconimii;
-        }
-
-
-    }
+//    public double calculDobanda(){
+//
+//        if (perioadaInLuni == 3){
+//                return (depozitContEconimii+ 0.5*depozitContEconimii);
+//        }else if (perioadaInLuni == 6){
+//            return depozitContEconimii+0.10*depozitContEconimii;
+//        }else if (perioadaInLuni == 12){
+//            return depozitContEconimii+0.20*depozitContEconimii;
+//        }else {
+//            return depozitContEconimii;
+//        }
+//
+//
+//    }
 
 }
