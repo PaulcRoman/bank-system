@@ -41,6 +41,7 @@ public class ViewUser {
         System.out.println("Apasati tasta 2 pentru a adauga fonduri");
         System.out.println("Apasati tasta 3 pentru a retrage fonduri");
         System.out.println("Apasati tasta 4 pentru a transfera in alt cont");
+        System.out.println("Apasati tasta 5 pentru a deschide cont de economii");
 
     }
 
@@ -53,6 +54,7 @@ public class ViewUser {
         switch (alegere){
             case 1:
                 afisareConturi();
+                play();
                 break;
             case 2:
                 depozitCont();
@@ -198,6 +200,7 @@ public void transfer(){
                     break;
                 default:
                     System.out.println("Please insert: 3 or 6 or 12 as your deposit term.");
+                    break;
             }
 
         }else {

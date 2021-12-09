@@ -16,10 +16,14 @@ public class ContEconomii extends Account{
     public ContEconomii(String text){
         super(Integer.parseInt(text.split(",")[0]), Integer.parseInt(text.split(",")[1]), text.split(",")[2],
                 Double.parseDouble(text.split(",")[3]));
-        this.perioadaInLuni = (Integer.parseInt(text.split(",")[4]));
-        this.dobanda = Double.parseDouble(text.split(",")[5]);
-        this.depozitContEconimii = Double.parseDouble(text.split(",")[6]);
+//        this(Double.parseDouble(text.split(",")[4]),Integer.parseInt(text.split(",")[5]),Double.parseDouble(text.split(",")[6]));
+//        this(Integer.parseInt(text.split(",")[4]),Double.parseDouble(text.split(",")[5]),Double.parseDouble(text.split(",")[6]));
+            this.depozitContEconimii = Double.parseDouble(text.split(",")[4]);
+            this.perioadaInLuni = Integer.parseInt(text.split(",")[5]);
+            this.dobanda = Double.parseDouble(text.split(",")[6]);
+
     }
+
 
     public int getPerioadaInLuni() {
         return perioadaInLuni;
