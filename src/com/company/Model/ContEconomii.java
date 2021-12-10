@@ -52,7 +52,7 @@ public class ContEconomii extends Account{
     @Override
     public String toString(){
 
-        return super.toString()+this.depozitContEconimii+","+this.perioadaInLuni+","+this.dobanda;
+        return super.toString()+this.depozitContEconimii+","+this.perioadaInLuni+","+this.dobanda+",";
 
     }
 

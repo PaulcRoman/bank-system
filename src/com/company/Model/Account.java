@@ -53,7 +53,7 @@ public class Account {
 
     @Override
     public String toString(){
-        return this.id+","+this.numarCont+","+this.tipCont+","+this.balanta;
+        return this.id+","+this.numarCont+","+this.tipCont+","+this.balanta+",";
     }
 
     @Override
@@ -95,15 +95,5 @@ public class Account {
         }
     }
 
-    public void transfer(int id, double amount){
 
-        if (this.id == id){
-
-
-
-
-        }
-
-
-    }
 }
