@@ -19,6 +19,7 @@ public class ControlEnrolment {
         listaEnrolment = new ArrayList<>();
         this.path = path;
         load();
+//        this.afisare();
 
     }
 
@@ -151,7 +152,7 @@ public class ControlEnrolment {
 
         ArrayList<Enrolment> enrolments = new ArrayList<>();
 
-        for (Enrolment e : enrolments) {
+        for (Enrolment e : listaEnrolment) {
 
             if (e.getPersonId() == idClient) {
 

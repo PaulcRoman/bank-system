@@ -263,6 +263,38 @@ public class ControlAccount {
         listaConturi.clear();
     }
 
+    public boolean availableCont(int number){
+        for (Account a : listaConturi){
+
+             if(a.getNumarCont()==number){
+
+                 return false;
+             }
+        }
+
+        return true;
+    }
+
+    //functie ce genereaza un numar de cont
+
+
+
+     public int random(){
+
+        return (int) Math.floor(Math.random()*100+1);
+     }
+
+     public int nextAvailableAccount(){
+
+
+       int rad=random();
+       while (availableCont(rad)==false){
+
+           rad=random();
+       }
+
+       return  rad;
+     }
 
 
 }

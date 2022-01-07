@@ -26,7 +26,7 @@ public class ViewUser {
 
         controlPersoane = new ControlPersoane(Path.of("src","com","company","persoane").toString());
         controlAccount = new ControlAccount("D:\\Full Stack JAVA\\JavaBasics\\MostenirePolimorfism\\bank-system\\src\\com\\company\\resources\\cont");
-        controlEnrolment = new ControlEnrolment(Path.of("src","com","company","enrolment.txt").toString());
+        controlEnrolment = new ControlEnrolment(Path.of("src","com","company","resources","enrolment.txt").toString());
         this.client = client;
         scanner = new Scanner(System.in);
 //        account = new Account(account.getId(), account.getNumarCont(), account.getTipCont(),account.getBalanta());
@@ -111,7 +111,6 @@ public void depozitCont(){
         System.out.println("Contul nu a fost gasit ...............");
     }
 
-
 }
 
 public void retragere(){
@@ -160,6 +159,7 @@ public void transfer(){
     Account transferAccount = controlAccount.getByNumber(accountTransfer);
 
     if (account1 != null && transferAccount != null){
+
         account1.setBalanta(account1.getBalanta()-sumaTransfer);
 
         transferAccount.setBalanta(transferAccount.getBalanta() + sumaTransfer);
@@ -171,10 +171,10 @@ public void transfer(){
 
     public void contEconomii(){
 
-
         System.out.println("Introduceti numarul contului de economii.");
 
         int account = Integer.parseInt(scanner.nextLine());
+
 
         System.out.println("Introduceti suma pe care doriti sa o transferati");
 
@@ -187,6 +187,7 @@ public void transfer(){
         Account account1 = controlAccount.getByNumber(account);
 
         if (account1 != null){
+
 
             switch (luni){
                 case 3:

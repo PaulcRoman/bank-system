@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ControlEnrolmentTest {
 
     ControlEnrolment controlEnrolment;
@@ -21,7 +19,9 @@ class ControlEnrolmentTest {
 
     @Test
     public void afisare(){
-        controlEnrolment.afisare();
+//        controlEnrolment.afisare();
+
+        controlEnrolment.afisareDupaId(1);
 
     }
 
@@ -30,6 +30,8 @@ class ControlEnrolmentTest {
 
         controlEnrolment.add(new Enrolment("123,234,345"));
         controlEnrolment.afisare();
+
+
 
 
     }
