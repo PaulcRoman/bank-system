@@ -1,1 +1,4 @@
 1,maria,popescu,client,maria@email.com,mariacont,parola1
+3,Andrei,Ciobanu,angajat,aemail@email.com,andreicont,parola3
+4,Ducu,Bertu,client,demail@email.com,ducucont,parola4
+

@@ -29,7 +29,6 @@ public class ControlEnrolment {
 
     public void load() {
 
-
         try {
 
             File file = new File(path);
@@ -78,7 +77,7 @@ public class ControlEnrolment {
         return -1;
     }
 
-    public void updateAccountId(int id, int accountId) {
+    public int updateAccountId(int id, int accountId) {
 
         int pozitie = getPozitie(id);
 
@@ -88,10 +87,10 @@ public class ControlEnrolment {
             e.setAccountId(accountId);
 
         }
-
+        return accountId;
     }
 
-    public void updatePersonId(int id, int personId) {
+    public int updatePersonId(int id, int personId) {
 
         int pozitie = getPozitie(id);
 
@@ -101,18 +100,23 @@ public class ControlEnrolment {
             e.setPersonId(personId);
 
         }
-
+        return personId;
     }
 
-
-    public void delete(int id) {
+    public boolean delete(int id) {
 
         int pozitie = getPozitie(id);
 
         if (pozitie != -1) {
             listaEnrolment.remove(pozitie);
-        }
 
+            return true;
+        }
+            return false;
+    }
+
+    public void clear(){
+        listaEnrolment.clear();
     }
 
     public void save() {

@@ -12,7 +12,7 @@ class ViewUserTest {
 
     @Test
     public void afisare(){
-        viewUser.afisareConturi();
+//        viewUser.afisareConturi();
     }
 
 }

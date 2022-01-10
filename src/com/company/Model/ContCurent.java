@@ -21,9 +21,11 @@ public class ContCurent extends Account{
     @Override
     public boolean equals(Object o){
 
-        ContCurent cc = (ContCurent) o;
+        if (o instanceof ContCurent) {
+            ContCurent cc = (ContCurent) o;
 
-        return super.equals(cc);
-
+            return super.equals(cc);
+        }
+        return false;
     }
 }

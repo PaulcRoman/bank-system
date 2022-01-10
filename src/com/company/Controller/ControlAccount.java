@@ -16,20 +16,20 @@ public class ControlAccount {
     private String path;
 
 
-    public ControlAccount(String path){
+    public ControlAccount(String path) {
         listaConturi = new ArrayList<>();
         this.path = path;
         load();
 
     }
 
-    public void add(Account account){
+    public void add(Account account) {
 
         listaConturi.add(account);
 
     }
 
-    public void load(){
+    public void load() {
 
         try {
 
@@ -37,19 +37,16 @@ public class ControlAccount {
 
             Scanner scanner = new Scanner(file);
 
-            while (scanner.hasNext()){
-
+            while (scanner.hasNext()) {
 
                 String linie = scanner.nextLine();
 
-//                System.out.println(linie);
-
-                if (linie.equals("")==false){
 
 
+                if (linie.equals("") == false) {
                     String tipCont = linie.split(",")[2];
 
-                    switch (tipCont){
+                    switch (tipCont) {
 
                         case "curent":
                             listaConturi.add(new ContCurent(linie));
@@ -66,24 +63,24 @@ public class ControlAccount {
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
     }
 
-    public void afisare(){
+    public void afisare() {
 
-        for (int i =0; i<listaConturi.size();i++){
+        for (int i = 0; i < listaConturi.size(); i++) {
             System.out.println(listaConturi.get(i));
         }
     }
 
-    public int getPozitie(int id){
+    public int getPozitie(int id) {
 
-        for (Account a : listaConturi){
+        for (Account a : listaConturi) {
 
-            if (a.getId() == id){
+            if (a.getId() == id) {
 
                 return listaConturi.indexOf(a);
             }
@@ -93,31 +90,33 @@ public class ControlAccount {
 
     }
 
-    public void updateNumarCont(int id, int numarCont){
+    public int updateNumarCont(int id, int numarCont) {
 
         int index = getPozitie(id);
 
-        if (index != -1){
+        if (index != -1) {
 
             Account a = listaConturi.get(index);
 
             a.setNumarCont(numarCont);
         }
-
+        return numarCont;
     }
 
-    public void updateTipCont(int id, String tipCont){
+    public String updateTipCont( String tipCont, int id) {
 
         int index = getPozitie(id);
 
-        if (index != -1 ){
+        if (index != -1) {
 
             Account a = listaConturi.get(index);
-                a.setTipCont(tipCont);
-
+            a.setTipCont(tipCont);
         }
+
+        return tipCont;
     }
-    public void updateBalanta(int id, double balanta){
+
+    public double updateBalanta(int id, double balanta) {
 
         int index = getPozitie(id);
 
@@ -127,31 +126,16 @@ public class ControlAccount {
 
             a.setBalanta(balanta);
 
-
         }
+
+        return balanta;
     }
 
-    public void depozit(int id, double amount){
+    public boolean delete(int id) {
 
         int index = getPozitie(id);
 
         if (index != -1) {
-
-            Account a = listaConturi.get(index);
-
-            a.deposit(id,amount);
-
-
-
-        }
-
-    }
-
-    public boolean delete(int id){
-
-        int index = getPozitie(id);
-
-        if (index != -1){
 
             listaConturi.remove(index);
 
@@ -162,30 +146,38 @@ public class ControlAccount {
 
     }
 
-    public void tipuriDeCont(){
+    public int getSize(){
+        return listaConturi.size();
+    }
+
+    public void tipuriDeCont() {
 
         int contCurent = 0;
-        int contEconomii=0;
+        int contEconomii = 0;
 
-        for (Account a : listaConturi){
+        for (Account a : listaConturi) {
 
-            if (a instanceof ContCurent){
-                contCurent ++;
-            }else if (a instanceof  ContEconomii){
+            if (a instanceof ContCurent) {
+
+                contCurent++;
+
+            }
+            if (a instanceof ContEconomii) {
+
                 contEconomii++;
             }
         }
 
-        System.out.println(String.format("Cont curent: %d, Cont economii: ", contCurent, contEconomii));
+        System.out.println(String.format("Cont curent: %d, Cont economii:%d ", contCurent, contEconomii));
 
     }
 
-    public void sortByTipCont(){
+    public void sortByTipCont() {
 
-        for (int i = 0; i< listaConturi.size(); i++){
-            for (int j = i +1; j< listaConturi.size();j++){
+        for (int i = 0; i < listaConturi.size(); i++) {
+            for (int j = i + 1; j < listaConturi.size(); j++) {
 
-                if (listaConturi.get(i).getTipCont().compareTo(listaConturi.get(j).getTipCont())>0){
+                if (listaConturi.get(i).getTipCont().compareTo(listaConturi.get(j).getTipCont()) > 0) {
 
                     Account aux = listaConturi.get(i);
 
@@ -200,11 +192,13 @@ public class ControlAccount {
 
     }
 
-    public Account getByNumber(int  number){
 
-        for (Account a : listaConturi){
 
-            if (a.getNumarCont()== number){
+    public Account getByNumber(int number) {
+
+        for (Account a : listaConturi) {
+
+            if (a.getNumarCont() == number) {
 
                 return a;
 
@@ -212,11 +206,11 @@ public class ControlAccount {
 
         }
 
-        return  null;
+        return null;
 
     }
 
-    public void save(){
+    public void save() {
 
         try {
 
@@ -228,18 +222,18 @@ public class ControlAccount {
             printWriter.close();
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
         String text = "";
 
-        for (Account a : listaConturi){
+        for (Account a : listaConturi) {
 
             text += a + "\n";
 
@@ -248,28 +242,28 @@ public class ControlAccount {
         return text;
     }
 
-    public int nextId(){
+    public int nextId() {
 
-        if (listaConturi.size()>0){
+        if (listaConturi.size() > 0) {
 
-            return listaConturi.get(listaConturi.size()-1).getNumarCont()+1;
+            return listaConturi.get(listaConturi.size() - 1).getNumarCont() + 1;
         }
 
         return 1;
     }
 
-    public void clear(){
+    public void clear() {
 
         listaConturi.clear();
     }
 
-    public boolean availableCont(int number){
-        for (Account a : listaConturi){
+    public boolean availableCont(int number) {
+        for (Account a : listaConturi) {
 
-             if(a.getNumarCont()==number){
+            if (a.getNumarCont() == number) {
 
-                 return false;
-             }
+                return false;
+            }
         }
 
         return true;
@@ -278,23 +272,21 @@ public class ControlAccount {
     //functie ce genereaza un numar de cont
 
 
+    public int random() {
 
-     public int random(){
+        return (int) Math.floor(Math.random() * 100 + 1);
+    }
 
-        return (int) Math.floor(Math.random()*100+1);
-     }
+    public int nextAvailableAccount() {
 
-     public int nextAvailableAccount(){
+        int rad = random();
+        while (availableCont(rad) == false) {
 
+            rad = random();
+        }
 
-       int rad=random();
-       while (availableCont(rad)==false){
-
-           rad=random();
-       }
-
-       return  rad;
-     }
+        return rad;
+    }
 
 
 }

@@ -53,11 +53,10 @@ public class Account {
 
     @Override
     public String toString(){
-        return this.id+","+this.numarCont+","+this.tipCont+","+this.balanta+",";
+        return this.id+","+this.numarCont+","+this.tipCont+","+this.balanta;
     }
 
     @Override
-
     public boolean equals(Object o){
 
         Account a = (Account) o;
@@ -68,31 +67,6 @@ public class Account {
         }
         return false;
 
-    }
-
-    public void deposit(int id, double amount){
-
-        if (this.id == id) {
-            balanta = balanta + amount;
-            System.out.println("Suma de " + amount + " a fost depozitata in contul dvs.");
-            System.out.println("Suma totala a contului este de " + balanta + " lei.");
-        }else {
-            System.out.println("ID-ul introdus nu este corect.");
-        }
-    }
-
-    public void retragere(int id, double amount){
-
-        if (this.id == id) {
-            if (balanta >= amount && amount != 0) {
-                balanta = balanta - amount;
-                System.out.println("Ati retras suma de " + amount + " lei.");
-            } else {
-                System.out.println("Fonduri insuficiente. Contul dvs este de " + balanta + " lei");
-            }
-        }else {
-            System.out.println("ID-ul introdus nu este corect");
-        }
     }
 
 

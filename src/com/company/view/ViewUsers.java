@@ -2,10 +2,7 @@ package com.company.view;
 
 import com.company.Controller.ControlAccount;
 import com.company.Controller.ControlEnrolment;
-import com.company.Controller.ControlPersoane;
-import com.company.Model.Account;
-import com.company.Model.Client;
-import com.company.Model.Enrolment;
+import com.company.Model.*;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -17,6 +14,9 @@ public class ViewUsers {
     private ControlAccount controlAccount;
     private Client client;
     private Scanner scanner;
+    private Account account;
+    private ContEconomii contEconomii;
+    private ContCurent contCurent;
 
     public ViewUsers (Client client){
         controlEnrolment = new ControlEnrolment(Path.of("src","com","company","resources","enrolment.txt").toString());
@@ -44,6 +44,7 @@ public class ViewUsers {
 
         switch (alegere){
             case 1:
+                controlEnrolment.afisare();
                 afisareConturi();
                 go();
                 break;
@@ -59,12 +60,16 @@ public class ViewUsers {
             case 5:
                 newCont();
                 break;
+            default:
+                System.out.println("Introduceti un numar de la 1 la 5");
+                go();
 
         }
     }
 
+    //pentru implementarea afisareConturi trebuie implementata o metoda de login
     public void afisareConturi(){
-        ArrayList<Enrolment>enrolments = controlEnrolment.afisareDupaId(client.getId());
+        ArrayList<Enrolment>enrolments = controlEnrolment.afisareDupaId(this.client.getId());
         for (Enrolment e : enrolments){
             System.out.println(e);
         }
@@ -134,7 +139,8 @@ public class ViewUsers {
             account1.setBalanta(account1.getBalanta() - sumaTransfer);
             account2.setBalanta(account2.getBalanta()+sumaTransfer);
 
-            System.out.println("Transferul s-a efectuat cu succcess. Balanta resuduala in contul curent este de: "+account1.getBalanta()+
+
+            System.out.println("Transferul s-a efectuat cu success. Balanta residuala in contul curent este de: "+account1.getBalanta()+
                     " Balanta in contul de transfer este de: "+account2.getBalanta());
         }else {
             System.out.println("Numar cont/balanta error.");
@@ -142,11 +148,34 @@ public class ViewUsers {
     }
 
     public void newCont(){
-        System.out.println("Introduceti tipul contului: curent/economii");
+        System.out.println("Introduceti tipul contului: curent sau economii");
+
         String tipCont = scanner.nextLine();
 
-         controlAccount.nextAvailableAccount();
+        switch (tipCont){
+            case "curent":
+                ContCurent contC = new ContCurent(controlAccount.nextAvailableAccount(),controlAccount.nextAvailableAccount(),"curent",0.0);
 
-         controlAccount.save();
+                this.controlAccount.add(contC);
+
+                controlAccount.save();
+
+                System.out.println("S-a adaugat contul curent cu numarul: " + contC.getNumarCont());
+
+                break;
+
+            case "economii":
+                ContEconomii contE = new ContEconomii(controlAccount.nextAvailableAccount(),controlAccount.nextAvailableAccount(),"economii",0.0,
+                        0.00,0,0.00);
+                this.controlAccount.add(contE);
+
+                controlAccount.save();
+
+                System.out.println("S-a adaugat contul economii cu numarul: "+ contE.getNumarCont());
+
+                break;
+
+        }
+
     }
 }

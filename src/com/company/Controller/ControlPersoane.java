@@ -89,7 +89,7 @@ public class ControlPersoane {
 
     }
 
-    public void updateNume(int id, String nume){
+    public String updateNume(int id, String nume){
 
         int index = getPozitie(id);
 
@@ -100,10 +100,11 @@ public class ControlPersoane {
             p.setNume(nume);
 
         }
+        return nume;
 
     }
 
-    public void updatePrenume(int id, String prenume){
+    public String updatePrenume(int id, String prenume){
 
         int index = getPozitie(id);
 
@@ -114,10 +115,10 @@ public class ControlPersoane {
             p.setPrenume(prenume);
 
         }
-
+        return prenume;
     }
 
-    public void updateFunctie(int id, String functie){
+    public String updateFunctie(int id, String functie){
 
         int index = getPozitie(id);
 
@@ -127,9 +128,10 @@ public class ControlPersoane {
 
             p.setFunctie(functie);
         }
+        return functie;
     }
 
-    public void updateEmail(int id, String email){
+    public String updateEmail(int id, String email){
 
         int index = getPozitie(id);
 
@@ -139,9 +141,10 @@ public class ControlPersoane {
 
             p.setEmail(email);
         }
+        return email;
     }
 
-    public void updateUsername(int id, String username){
+    public String updateUsername(int id, String username){
 
         int index = getPozitie(id);
 
@@ -152,9 +155,10 @@ public class ControlPersoane {
             p.setUsername(username);
 
         }
+        return username;
     }
 
-    public void updateParola(int id, String parola){
+    public String updateParola(int id, String parola){
 
         int index = getPozitie(id);
 
@@ -164,17 +168,19 @@ public class ControlPersoane {
 
             p.setParola(parola);
         }
+        return parola;
     }
 
-    public void delete(int id){
+    public boolean delete(int id){
 
         int index = getPozitie(id);
 
         if (index != -1){
 
             listaPersoane.remove(index);
+            return true;
         }
-
+        return false;
     }
 
     public void afisarePersoane(){
@@ -256,6 +262,17 @@ public class ControlPersoane {
             return listaPersoane.get(listaPersoane.size()-1).getId()+1;
         }
         return -1;
+    }
+
+    public Persoana login(String email, String parola){
+        for (Persoana p : listaPersoane){
+
+            if (p.getEmail().equals(email) && p.getParola().equals(parola)) {
+                return p;
+            }
+
+        }
+        return null;
     }
 
 
