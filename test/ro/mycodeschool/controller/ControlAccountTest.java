@@ -1,6 +1,8 @@
 package ro.mycodeschool.controller;
 
 import com.company.Controller.ControlAccount;
+import com.company.Model.ContCurent;
+import com.company.Model.ContEconomii;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +19,14 @@ class ControlAccountTest {
 
         controlAccount = new ControlAccount("D:\\Full Stack JAVA\\JavaBasics\\MostenirePolimorfism\\bank-system\\test\\ro\\mycodeschool\\data\\contTest");
 
+    }
+
+    @AfterEach
+
+    public  void  clear(){
+        controlAccount.clear();
+
+        controlAccount.save();
     }
 
     @Test
@@ -82,6 +92,52 @@ class ControlAccountTest {
     public void testAvailableAccount(){
         assertEquals(true,controlAccount.availableCont(6));
         assertEquals(false,controlAccount.availableCont(1));
+    }
+
+    @Test
+    public void testNumarAccount(){
+
+
+        ContCurent contCurent = new ContCurent("5,5,curent,1234.5");
+
+        ContCurent contCurent1 = new ContCurent("6,6,curent,23455.6");
+
+        controlAccount.add(contCurent);
+        controlAccount.add(contCurent1);
+
+        controlAccount.save();
+
+//        controlAccount.load();
+
+
+        assertEquals(2,controlAccount.numarContEconomii("curent"));
+
+
+
+
+    }
+
+    @Test
+    public void testNumerConr2(){
+
+        ContCurent contCurent = new ContCurent("5,5,curent,1234.5");
+        ContCurent contCurent1 = new ContCurent("6,6,curent,23455.6");
+        ContEconomii contEconomii1 = new ContEconomii("4,4,economii,534.0,20.5,6,15.25");
+
+        controlAccount.add(contCurent);
+        controlAccount.add(contCurent1);
+        controlAccount.add(contEconomii1);
+
+        controlAccount.save();
+
+
+
+        assertEquals("4,4,economii,534.0,20.5,6,15.25", controlAccount.getByNumber(4).toString());
+        assertEquals("5,5,curent,1234.5", controlAccount.getByNumber(5).toString());
+
+
+
+
     }
 
 

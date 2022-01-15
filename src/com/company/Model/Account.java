@@ -69,5 +69,10 @@ public class Account {
 
     }
 
+    public String toSave(){
+
+        return id+","+numarCont+","+tipCont+","+balanta;
+    }
+
 
 }

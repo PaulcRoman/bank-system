@@ -1,6 +1,7 @@
 package ro.mycodeschool.controller;
 
 import com.company.Controller.ControlPersoane;
+import com.company.Model.Client;
 import com.company.Model.Persoana;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -82,6 +83,14 @@ class ControlPersoaneTest {
         assertEquals(true,controlPersoane.delete(1));
     }
 
+    @Test
+    public void testLogin(){
+
+        //GIVE
+        Client client = new Client("4,Ion,Ionescu,client,ion@email.com,ioncont,parola9");
+        controlPersoane.add(client);
+        assertEquals("ion@email.com", controlPersoane.login("ion@email.com","parola9").getEmail());
+    }
 
 
     @AfterEach
@@ -89,8 +98,8 @@ class ControlPersoaneTest {
 
         controlPersoane.clear();
 
-        controlPersoane.add(new Persoana("1,maria,popescu,client,maria@email.com,mariacont,parola1"));
-        controlPersoane.add(new Persoana("3,Andrei,Ciobanu,angajat,aemail@email.com,andreicont,parola3"));
+        controlPersoane.add(new Persoana("1,Andrei,Ciobanu,client,andrei@email.com,andreicont,parola1"));
+        controlPersoane.add(new Persoana("2,Marius,Nistor,client,marius@email.com,mariuscont,parola2"));
         controlPersoane.add(new Persoana("4,Ducu,Bertu,client,demail@email.com,ducucont,parola4"));
         controlPersoane.save();
     }

@@ -2,6 +2,7 @@ package com.company.view;
 
 import com.company.Controller.ControlAccount;
 import com.company.Controller.ControlEnrolment;
+import com.company.Controller.ControlPersoane;
 import com.company.Model.*;
 
 import java.nio.file.Path;
@@ -10,13 +11,14 @@ import java.util.Scanner;
 
 public class ViewUsers {
 
+
     private ControlEnrolment controlEnrolment;
     private ControlAccount controlAccount;
     private Client client;
     private Scanner scanner;
-    private Account account;
-    private ContEconomii contEconomii;
-    private ContCurent contCurent;
+//    private Account account;
+//    private ContEconomii contEconomii;
+//    private ContCurent contCurent;
 
     public ViewUsers (Client client){
         controlEnrolment = new ControlEnrolment(Path.of("src","com","company","resources","enrolment.txt").toString());
@@ -28,23 +30,23 @@ public class ViewUsers {
 
     public void meniu(){
 
+        System.out.println("==========Meniu User=========");
         System.out.println("Apasati tasta 1 pentru a vizualiza conturile.");
         System.out.println("Apasati tasta 2 pentru a adauga fonduri.");
         System.out.println("Apasati tasta 3 pentru a retrage fonduri.");
         System.out.println("Apasati tasta 4 pentru a transfera fonduri.");
         System.out.println("Apasati tasta 5 pentru a crea un cont nou");
 
-
     }
 
     public void go(){
+
         meniu();
 
         int alegere = Integer.parseInt(scanner.nextLine());
 
         switch (alegere){
             case 1:
-                controlEnrolment.afisare();
                 afisareConturi();
                 go();
                 break;
@@ -157,8 +159,14 @@ public class ViewUsers {
                 ContCurent contC = new ContCurent(controlAccount.nextAvailableAccount(),controlAccount.nextAvailableAccount(),"curent",0.0);
 
                 this.controlAccount.add(contC);
-
                 controlAccount.save();
+
+                Enrolment enrolment = new Enrolment(controlEnrolment.nextId(),this.client.getId(),contC.getId());
+
+                controlEnrolment.add(enrolment);
+
+                controlEnrolment.save();
+
 
                 System.out.println("S-a adaugat contul curent cu numarul: " + contC.getNumarCont());
 
@@ -170,6 +178,8 @@ public class ViewUsers {
                 this.controlAccount.add(contE);
 
                 controlAccount.save();
+
+//                Enrolment enrolment1 = new Enrolment(controlEnrolment.nextId())
 
                 System.out.println("S-a adaugat contul economii cu numarul: "+ contE.getNumarCont());
 

@@ -31,6 +31,7 @@ public class ControlAccount {
 
     public void load() {
 
+//        this.listaConturi.clear();
         try {
 
             File file = new File(path);
@@ -210,6 +211,19 @@ public class ControlAccount {
 
     }
 
+//    public String toSave(){
+//
+//        String text = "";
+//
+//        for (Account account : listaConturi) {
+//
+//            text += account.toSave()+"\n";
+//        }
+//
+//        return text;
+//
+//    }
+
     public void save() {
 
         try {
@@ -224,6 +238,7 @@ public class ControlAccount {
 
         } catch (Exception e) {
 
+            e.printStackTrace();
         }
 
     }
@@ -233,13 +248,15 @@ public class ControlAccount {
 
         String text = "";
 
-        for (Account a : listaConturi) {
 
-            text += a + "\n";
+        for(int i=0;i<listaConturi.size()-1;i++){
 
+            text+=listaConturi.get(i)+"\n";
         }
 
-        return text;
+        text+=listaConturi.get(listaConturi.size()-1);
+        
+        return  text;
     }
 
     public int nextId() {
@@ -286,6 +303,21 @@ public class ControlAccount {
         }
 
         return rad;
+    }
+
+
+    public int  numarContEconomii(String tip){
+
+        int cont = 0;
+        for (Account a : listaConturi){
+
+            if (a.getTipCont().equals(tip)){
+                cont++;
+
+            }
+        }
+        return cont;
+
     }
 
 

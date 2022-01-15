@@ -10,6 +10,8 @@ public class Persoana {
     String username;
     String parola;
 
+    private boolean isAdmin;
+
     public Persoana(int id, String nume, String prenume, String functie, String email, String username, String parola){
         this.id = id;
         this.nume = nume;

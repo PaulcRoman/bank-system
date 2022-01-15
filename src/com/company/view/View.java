@@ -31,8 +31,8 @@ public class View {
     public void meniu(){
 
         System.out.println("=============Meniu Angajat=============");
-        System.out.println("Apasati tasta 1 petru a vizualiza contul");
-        System.out.println("Apasati tasta 2 pentru a edita contul");
+        System.out.println("Apasati tasta 1 petru a va loga");
+//        System.out.println("Apasati tasta 2 pentru a iesi");
 
     }
 

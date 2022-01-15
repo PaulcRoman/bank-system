@@ -1,5 +1,6 @@
 package com.company.Controller;
 
+import com.company.Model.Account;
 import com.company.Model.Enrolment;
 
 import java.io.File;
@@ -119,6 +120,19 @@ public class ControlEnrolment {
         listaEnrolment.clear();
     }
 
+    public String toSave(){
+
+        String text = "";
+
+        for (Enrolment enrolment : listaEnrolment) {
+
+            text += enrolment.toSave()+"\n";
+        }
+
+        return text;
+
+    }
+
     public void save() {
 
         try {
@@ -127,7 +141,7 @@ public class ControlEnrolment {
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
 
-            printWriter.println(this);
+            printWriter.println(this.toSave());
             printWriter.close();
 
 
@@ -141,11 +155,15 @@ public class ControlEnrolment {
 
         String text = "";
 
-        for (Enrolment e : listaEnrolment) {
+        for (int i = 0; i< listaEnrolment.size()-1;i++) {
 
-            text += e + "\n";
+
+            text += listaEnrolment.get(i) + "\n";
 
         }
+
+        text += listaEnrolment.get(listaEnrolment.size()-1);
+
         return text;
 
     }
@@ -168,6 +186,16 @@ public class ControlEnrolment {
 
         return enrolments;
 
+    }
+
+    public int nextId() {
+
+        if (listaEnrolment.size() > 0) {
+
+            return listaEnrolment.get(listaEnrolment.size() - 1).getAccountId() + 1;
+        }
+
+        return 1;
     }
 }
 

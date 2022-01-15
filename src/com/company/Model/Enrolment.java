@@ -51,4 +51,8 @@ public class Enrolment {
 
     }
 
+    public String toSave(){
+        return id+","+personId+","+accountId;
+    }
+
 }

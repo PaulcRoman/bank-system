@@ -7,7 +7,7 @@ public class ContEconomii extends Account{
     private double dobanda;
 
     public ContEconomii(int id, int numarCont, String tip, double balanta, double depozitContEconimii,int perioadaInLuni, double dobanda){
-        super(id, numarCont, "cont economii", balanta);
+        super(id, numarCont, "economii", balanta);
         this.perioadaInLuni = perioadaInLuni;
         this.dobanda = dobanda;
         this.depozitContEconomii = depozitContEconimii;

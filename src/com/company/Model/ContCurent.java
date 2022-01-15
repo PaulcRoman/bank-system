@@ -3,7 +3,7 @@ package com.company.Model;
 public class ContCurent extends Account{
 
     public ContCurent(int id, int numarCont, String tip, double balanta){
-        super(id, numarCont,"cont curent",balanta);
+        super(id, numarCont,"curent",balanta);
     }
 
     public ContCurent(String text){
